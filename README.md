@@ -71,6 +71,53 @@ Looking into `tests/test_a1.py` and finding out how the tests are done
 may help you implement `src/phys305_hw6/a1.py`.
 
 
+### **Assignment 2**: Velocity Field, Jacobian, and Dealiasing (2 points)
+
+Implement the functions in `src/phys305_hw6/a2.py` that construct key
+spectral operations required to evolve 2D incompressible fluid flow.
+
+You will define the following three functions:
+
+1. `vel(grids, Psi)`: Compute the velocity components from a
+   streamfunction `Psi` in spectral space.
+
+   **Inputs:**
+   * `grids`: an instance of your `Grids` class from Assignment 1, which provides `kx`, `ky`.
+   * `Psi`: 2D NumPy array in spectral space.
+
+   **Returns:**
+   * `ux`, `uy`: real-space velocity fields computed via spectral derivatives:
+
+2. `Jdet(grids, Psi, W)`: Compute the Jacobian determinant $J(\psi,
+   w)$ in spectral space, which captures the nonlinear advection term.
+
+   **Inputs:**
+   * `grids`: the Grids object.
+   * `Psi`: streamfunction in spectral space.
+   * `W`: vorticity in spectral space.
+
+   **Returns:**
+   * A 2D NumPy array representing the Jacobian determinant in spectral space.
+
+3. `dealiasing(F)`: Apply the 2/3 rule to remove high-frequency modes
+   from a 2D Fourier array F.
+
+   **Input:**
+   * `F`: a 2D NumPy array in spectral space (Fourier-transformed).
+
+   **Returns:**
+   * A new array where all modes with indices beyond (`N/3`) in either
+     dimension have been set to zero:
+
+**Hints and Testing:**
+* Review `tests/test_a2.py` to understand how correctness is verified.
+* The test initializes streamfunction $\psi = -\sin(x) + \sin(y)$ and
+  vorticity $w = \sin(x) - \sin(y)$.
+  The corresponding velocity and Jacobian are known analytically.
+* The dealiasing test checks that Fourier modes in the excluded band
+  are zero.
+
+
 ## Additional Notes
 
 * **Collaboration**:
