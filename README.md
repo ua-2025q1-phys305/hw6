@@ -196,6 +196,59 @@ vorticity equation.
    step `dt`.
 
 
+### Assignment 5: Full Simulation Driver (2 points)
+
+In this final assignment, you will implement a complete simulation
+pipeline that brings together everything from the previous
+assignments.
+Your goal is to evolve a 2D incompressible fluid using spectral
+methods and output a series of visualization frames.
+
+1. `main()` Function: Implement the function `main()` in
+   `src/phys305_hw6/a5.py`.
+
+   This function sets up and runs the simulation.
+   The default arguments control time step size, resolution,
+   viscosity, and other physical or numerical parameters.
+
+   **Default Parameters:**
+   ```python
+   dt   = 0.001     # Time step
+   Nt   = 10000     # Number of time steps
+   skip = 10        # Output frequency
+   L    = 2 * np.pi # Domain size
+   N    = 128       # Grid resolution
+   nu   = 0.001     # Kinematic viscosity
+   mu   = 0.0       # Ekman damping
+   beta = 0.0       # Coriolis parameter
+   ```
+
+2. Steps to Implement:
+   1. Create a Stepper object: `step = Stepper(L, N, nu, mu, beta)`
+   2. Initialize the vorticity field: `W = init(step, 0.5)`
+   3. Loop through the time steps:
+      * Save a visualization every skip steps using `plot()`.
+      * Advance the simulation by calling `step(W, dt)` repeatedly.
+   4. Save the final frame after the loop ends.
+
+3. Make the script executable by adding:
+   ```python
+   if __name__ == "__main__":
+       main()
+   ```
+
+**Hints and Testing**
+
+* It is very difficult to automatically test graphic output so we are
+  not checking the output of `main()`.
+  Nevertheless, the test still requires `main()` runs without
+  problems; and we will manually inspect your output for full credits.
+* The test runs `main(Nt=10,skip=1)`, which should generate 11 PNG
+  files (`0000.png` to `0010.png`).
+* These files must be created in the current directory, so make sure
+  `plot()` and `plt.savefig()` are called correctly.
+* Use `plt.close()` after each plot to avoid memory issues.
+
 ## Additional Notes
 
 * **Collaboration**:
