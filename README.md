@@ -71,7 +71,7 @@ Looking into `tests/test_a1.py` and finding out how the tests are done
 may help you implement `src/phys305_hw6/a1.py`.
 
 
-### **Assignment 2**: Velocity Field, Jacobian, and Dealiasing (2 points)
+### Assignment 2: Velocity Field, Jacobian, and Dealiasing (2 points)
 
 Implement the functions in `src/phys305_hw6/a2.py` that construct key
 spectral operations required to evolve 2D incompressible fluid flow.
@@ -116,6 +116,43 @@ You will define the following three functions:
   The corresponding velocity and Jacobian are known analytically.
 * The dealiasing test checks that Fourier modes in the excluded band
   are zero.
+
+### Assignment 3: Initialization and Visualization (2 points)
+
+In this assignment, you will implement `init()` and `plot()` functions
+in `src/phys305_hw6/a3.py` to set up an initial vorticity field and
+visualize the fluid flow using the streamfunction and velocity field.
+
+1. `init(grids, scale)`: This function initializes the vorticity field
+   in spectral space.
+
+   **Inputs:**
+   * `grids`: an instance of the `Grids` class from Assignment 1.
+   * `scale`: standard deviation for generating the random velocity
+     field.
+
+   **Returns:**
+   * `W`: the initial vorticity in spectral space, with high-frequency
+     modes suppressed using the 2/3 de-aliasing rule.
+
+2. `plot(grids, W, L, skip=4)`: This function visualizes the
+   streamfunction and velocity field using matplotlib.
+
+   **Inputs:**
+   * `grids`: the Grids object.
+   * `W`: the vorticity in spectral space.
+   * `L`: the size of the domain.
+   * `skip`: how many grid points to skip when plotting velocity
+     vectors (default is 4).
+
+   Behavior:
+   * Solve for the streamfunction using the inverse Laplacian: `Psi =
+     grids.ikk * W`.
+   * Convert `Psi` to real space using inverse FFT.
+   * Plot the streamfunction using `plt.imshow()`.
+   * Compute velocity field using `vel()` and overlay arrows using
+     `plt.quiver()`.
+
 
 
 ## Additional Notes
