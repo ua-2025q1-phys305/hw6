@@ -154,6 +154,47 @@ visualize the fluid flow using the streamfunction and velocity field.
      `plt.quiver()`.
 
 
+### Assignment 4: Time-Stepping the Vorticity Field (2 points)
+
+In this assignment, you will implement a spectral time-stepper in
+`src/phys305_hw6/a4.py` using a semi-implicit update scheme for the 2D
+vorticity equation.
+
+1. `Stepper` Class: Create a class `Stepper` that inherits from the
+   `Grids` class you built in Assignment 1.
+   This means `Stepper` **extends** the grid structure with additional
+   physical parameters and a time-stepping method.
+
+   **Why subclass `Grids`?**
+   The `Grids` class already provides all the spatial and spectral
+   arrays (like `x`, `kx`, `ikk`) needed to evolve the vorticity.
+   By subclassing it, `Stepper` can directly access those arrays,
+   making the code cleaner and modular.
+
+2. Class Signature:
+
+   ```python
+   class Stepper(Grids):
+       def __init__(self, L, N, nu, mu, beta):
+       	   ...
+       def __call__(self, W, dt):
+           ...
+   ```
+
+   Constructor Inputs:
+   * `L`: domain size.
+   * `N`: number of grid points per dimension.
+   * `nu`: kinematic viscosity.
+   * `mu`: Ekman damping coefficient.
+   * `beta`: strength of Coriolis variation ($\beta$-plane).
+
+   These parameters are saved as attributes inside the object.
+
+   `__call__(self, W, dt)`:
+   This method makes the Stepper object behave like a function: when
+   you call `step(W, dt)`, it advances the vorticity `W` by one time
+   step `dt`.
+
 
 ## Additional Notes
 
