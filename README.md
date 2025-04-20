@@ -39,14 +39,10 @@ maximize your score.
 
 ## Assignments
 
-A Jupyter notebook `demo/vis.ipynb` is provided to help you test and
-visualize your code.
-Use it frequently to debug and validate your solver.
-
 Each Python file in `src/phys305_hw6/` corresponds to one assignment.
 The notebook will call your implementations directly, so ensure your
 functions are correct and match the required interface.
-Use pytest to validate outputs and spot common mistakes.
+Use `pytest` to validate outputs and spot common mistakes.
 
 
 ### Assignment 1: Grid and Wavenumber Setup (2 points)
