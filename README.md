@@ -5,7 +5,7 @@ This homework set is worth **10 points** and is designed to test your
 understanding of topics that we've covered.
 The submission cutoff time is at **Thursday May 8th, 11:59pm** Arizona
 time.
-Please use [this link](https://classroom.github.com/a/___) to
+Please use [this link](https://classroom.github.com/a/6aVUKkGd) to
 accept it from GitHub Classroom.
 
 
