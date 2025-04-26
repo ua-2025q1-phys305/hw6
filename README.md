@@ -120,7 +120,12 @@ in `src/phys305_hw6/a3.py` to set up an initial vorticity field and
 visualize the fluid flow using the streamfunction and velocity field.
 
 1. `init(grids, scale)`: This function initializes the vorticity field
-   in spectral space.
+   in spectral space based on a **special initial condition**:
+   * Horizontal velocity `ux`: random noise generated from a normal
+     distribution with zero mean and specified standard deviation
+     `scale`.
+   * Vertical velocity `uy`: a **step function** that is +1 when `x >=
+     0` and -1 otherwise.
 
    **Inputs:**
    * `grids`: an instance of the `Grids` class from Assignment 1.
